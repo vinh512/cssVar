@@ -21,12 +21,14 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    /* declaring css variables */
     :root {
       --base: #ffc600;
       --spacing: 10px;
       --blur: 0px;
     }
 
+    /* using css variables */
     img {
       padding: var(--spacing);
       background: var(--base);
@@ -55,20 +57,18 @@
   </style>
 
   <script>
+    // cache the input elements as a nodelist
     const inputs = document.querySelectorAll('.controls input');
 
-    // Goes through the inputs nodelist and adds an eventlistener to each input element
+    // goes through the inputs nodelist and adds an eventlistener to each input element
     inputs.forEach(function(input){
       input.addEventListener('change', function(e) {
-        console.log(this.value);
-        const suffix = this.dataset.sizing || '';
+        const suffix = this.dataset.sizing || ''; // creating a suffix to append to value
 
-        console.log(input.name)
-
+        // selects the root style element and dynamically changes css value
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
-      })
+      });
     })
-
   </script>
 
 </body>
