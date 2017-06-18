@@ -60,6 +60,15 @@
     // cache the input elements as a nodelist
     const inputs = document.querySelectorAll('.controls input');
 
+    function updateHandler() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+
+    inputs.forEach(input => input.addEventListener('change', updateHandler))
+    inputs.forEach(input => input.addEventListener('mousemove', updateHandler))
+
+    /*
     // goes through the inputs nodelist and adds an eventlistener to each input element
     inputs.forEach(function(input){
       input.addEventListener('change', function(e) {
@@ -69,6 +78,7 @@
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
       });
     })
+    */
   </script>
 
 </body>
